@@ -1,6 +1,6 @@
-# Laravel — Subscription Billing & Usage Metering
+# Senior Laravel Developer — Subscription Billing & Usage Metering
 
-A multi-tenant SaaS subscription billing and usage-metering backend built with Laravel. The application supports merchants, customers, plans, subscriptions, usage ingestion, aggregation, billing, overage calculation, mid-cycle plan changes, dashboard reporting, caching, rate limiting, queues, and automated tests.
+A multi-tenant SaaS subscription billing and usage-metering backend built with Laravel.
 
 The application supports:
 
@@ -36,43 +36,37 @@ The application supports:
 - PHPUnit
 
 ---
-## Installation
 
-Clone the repository:
+# 2. Architecture
 
-https://github.com/Prabunadesan/subscription-billing-metering.git
+The application follows a service-oriented Laravel architecture.
 
-Go to the project:
-
-cd subscription-billing-metering
-
-Install PHP dependencies:
-
-composer install
-
-Copy environment file:
-
-cp .env.example .env
-
-Generate application key:
-
-php artisan key:generate
-
-Configure database in '.env'.
-
-Run migrations:
-
-php artisan migrate
-
-Start Laravel:
-
-php artisan serve
-
-Application:
-
-http://127.0.0.1:8000/dashboard/1
-
-
-## Author
-
-Prabu Nadesan
+```text
+                         ┌─────────────────────┐
+                         │      API Client      │
+                         └──────────┬──────────┘
+                                    │
+                                    ▼
+                         ┌─────────────────────┐
+                         │ Laravel Controllers │
+                         └──────────┬──────────┘
+                                    │
+                    ┌───────────────┼────────────────┐
+                    │               │                │
+                    ▼               ▼                ▼
+             Usage Service   Plan Change Service   Dashboard
+                    │               │                │
+                    ▼               ▼                ▼
+             usage_events     subscriptions      daily_usage
+                    │                                  │
+                    ▼                                  │
+             Queue / Job                               │
+                    │                                  │
+                    ▼                                  │
+             daily_usage ◄────────────────────────────┘
+                    │
+                    ▼
+              Billing Service
+                    │
+                    ▼
+          invoices / invoice_items

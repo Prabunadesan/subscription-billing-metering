@@ -1,0 +1,684 @@
+
+@import 'tailwindcss';
+/* =========================
+   Dashboard Theme
+   ========================= */
+
+:root {
+    --bg: #eef2ff;
+    --surface: #ffffff;
+    --text: #172033;
+    --muted: #718096;
+    --border: #e5e7eb;
+
+    --purple: #7c3aed;
+    --purple-light: #f3e8ff;
+
+    --blue: #2563eb;
+    --blue-light: #dbeafe;
+
+    --green: #059669;
+    --green-light: #d1fae5;
+
+    --orange: #ea580c;
+    --orange-light: #ffedd5;
+
+    --red: #dc2626;
+    --red-light: #fee2e2;
+
+    --shadow: 0 10px 30px rgba(59, 72, 130, 0.10);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    font-family:
+        Inter,
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    color: var(--text);
+
+    background:
+        radial-gradient(
+            circle at 0% 0%,
+            rgba(124, 58, 237, 0.15),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 100% 0%,
+            rgba(37, 99, 235, 0.13),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #eef2ff 0%,
+            #f8faff 50%,
+            #f0fdf9 100%
+        );
+}
+
+/* =========================
+   Header
+   ========================= */
+
+.dashboard-header {
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(12px);
+
+    border-bottom: 1px solid rgba(229, 231, 235, 0.8);
+
+    padding: 22px 0;
+}
+
+.dashboard-header-inner {
+    max-width: 1250px;
+    margin: auto;
+    padding: 0 24px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.dashboard-brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.dashboard-brand-icon {
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 14px;
+
+    color: white;
+
+    background: linear-gradient(
+        135deg,
+        #7c3aed,
+        #2563eb
+    );
+
+    box-shadow:
+        0 8px 20px rgba(99, 102, 241, 0.30);
+}
+
+.dashboard-brand-name {
+    font-size: 21px;
+    font-weight: 800;
+}
+
+.dashboard-brand-subtitle {
+    margin-top: 3px;
+
+    color: var(--muted);
+
+    font-size: 13px;
+}
+
+.dashboard-period {
+    padding: 9px 15px;
+
+    border-radius: 10px;
+
+    background: #f5f3ff;
+
+    color: #6d28d9;
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+/* =========================
+   Main
+   ========================= */
+
+.dashboard-content {
+    max-width: 1250px;
+    margin: auto;
+    padding: 32px 24px 50px;
+}
+
+.dashboard-heading {
+    margin-bottom: 24px;
+}
+
+.dashboard-heading h1 {
+    margin: 0;
+
+    font-size: 30px;
+    font-weight: 800;
+
+    letter-spacing: -0.5px;
+}
+
+.dashboard-heading p {
+    margin: 7px 0 0;
+
+    color: var(--muted);
+
+    font-size: 14px;
+}
+
+/* =========================
+   KPI Cards
+   ========================= */
+
+.dashboard-kpis {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 20px;
+
+    margin-bottom: 24px;
+}
+
+.dashboard-kpi {
+    position: relative;
+
+    padding: 23px;
+
+    min-height: 150px;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
+    box-shadow: var(--shadow);
+
+    border: 1px solid rgba(255, 255, 255, 0.8);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.dashboard-kpi:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 18px 35px rgba(59, 72, 130, 0.14);
+}
+
+.dashboard-kpi:nth-child(1) {
+    background: linear-gradient(
+        135deg,
+        #ffffff,
+        #eef2ff
+    );
+}
+
+.dashboard-kpi:nth-child(2) {
+    background: linear-gradient(
+        135deg,
+        #ffffff,
+        #ecfdf5
+    );
+}
+
+.dashboard-kpi:nth-child(3) {
+    background: linear-gradient(
+        135deg,
+        #ffffff,
+        #fff7ed
+    );
+}
+
+.dashboard-kpi-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dashboard-kpi-title {
+    color: var(--muted);
+
+    font-size: 13px;
+    font-weight: 700;
+
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.dashboard-kpi-icon {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+
+    font-size: 19px;
+}
+
+.dashboard-kpi:nth-child(1) .dashboard-kpi-icon {
+    background: var(--purple-light);
+    color: var(--purple);
+}
+
+.dashboard-kpi:nth-child(2) .dashboard-kpi-icon {
+    background: var(--green-light);
+    color: var(--green);
+}
+
+.dashboard-kpi:nth-child(3) .dashboard-kpi-icon {
+    background: var(--orange-light);
+    color: var(--orange);
+}
+
+.dashboard-kpi-value {
+    margin-top: 17px;
+
+    font-size: 30px;
+    font-weight: 800;
+}
+
+.dashboard-kpi-description {
+    margin-top: 5px;
+
+    color: var(--muted);
+
+    font-size: 12px;
+}
+
+/* =========================
+   Main Cards
+   ========================= */
+
+.dashboard-main-grid {
+    display: grid;
+
+    grid-template-columns: 1.7fr 1fr;
+
+    gap: 22px;
+
+    margin-bottom: 22px;
+}
+
+.dashboard-card {
+    background: rgba(255, 255, 255, 0.94);
+
+    border: 1px solid rgba(229, 231, 235, 0.9);
+
+    border-radius: 20px;
+
+    box-shadow: var(--shadow);
+
+    overflow: hidden;
+}
+
+.dashboard-card-header {
+    padding: 21px 23px;
+
+    border-bottom: 1px solid #edf0f5;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dashboard-card-title {
+    font-size: 17px;
+    font-weight: 800;
+}
+
+.dashboard-card-description {
+    margin-top: 4px;
+
+    color: var(--muted);
+
+    font-size: 12px;
+}
+
+.dashboard-badge {
+    padding: 6px 10px;
+
+    border-radius: 8px;
+
+    background: #f3f4f6;
+
+    color: #4b5563;
+
+    font-size: 11px;
+    font-weight: 700;
+}
+
+/* =========================
+   Tables
+   ========================= */
+
+.dashboard-table-container {
+    overflow-x: auto;
+}
+
+.dashboard-table {
+    width: 100%;
+
+    border-collapse: collapse;
+}
+
+.dashboard-table th {
+    padding: 13px 20px;
+
+    background: #fafbff;
+
+    color: #8a93a6;
+
+    font-size: 11px;
+
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+
+    text-align: left;
+}
+
+.dashboard-table td {
+    padding: 16px 20px;
+
+    border-top: 1px solid #f0f2f6;
+
+    font-size: 13px;
+}
+
+.dashboard-table tbody tr {
+    transition: background 0.15s ease;
+}
+
+.dashboard-table tbody tr:hover {
+    background: #f8f9ff;
+}
+
+/* =========================
+   Customer
+   ========================= */
+
+.dashboard-customer {
+    display: flex;
+
+    align-items: center;
+
+    gap: 11px;
+}
+
+.dashboard-avatar {
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 11px;
+
+    background: linear-gradient(
+        135deg,
+        #7c3aed,
+        #3b82f6
+    );
+
+    color: white;
+
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.dashboard-customer-name {
+    font-weight: 700;
+}
+
+.dashboard-customer-email {
+    margin-top: 2px;
+
+    color: var(--muted);
+
+    font-size: 11px;
+}
+
+/* =========================
+   Usage
+   ========================= */
+
+.dashboard-usage {
+    font-weight: 800;
+}
+
+.dashboard-usage-bar {
+    width: 110px;
+    height: 7px;
+
+    margin-top: 7px;
+
+    overflow: hidden;
+
+    border-radius: 20px;
+
+    background: #edf0f7;
+}
+
+.dashboard-usage-fill {
+    height: 100%;
+
+    border-radius: inherit;
+
+    background: linear-gradient(
+        90deg,
+        #7c3aed,
+        #3b82f6
+    );
+}
+
+/* =========================
+   Revenue
+   ========================= */
+
+.dashboard-revenue {
+    padding: 28px;
+}
+
+.dashboard-revenue-label {
+    color: var(--muted);
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.dashboard-revenue-value {
+    margin-top: 10px;
+
+    font-size: 38px;
+    font-weight: 850;
+
+    color: #059669;
+}
+
+.dashboard-revenue-description {
+    margin-top: 7px;
+
+    color: var(--muted);
+
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.dashboard-progress {
+    height: 9px;
+
+    margin-top: 22px;
+
+    overflow: hidden;
+
+    border-radius: 20px;
+
+    background: #e5e7eb;
+}
+
+.dashboard-progress::before {
+    content: "";
+
+    display: block;
+
+    width: 68%;
+    height: 100%;
+
+    border-radius: inherit;
+
+    background: linear-gradient(
+        90deg,
+        #10b981,
+        #34d399
+    );
+}
+
+.dashboard-progress-labels {
+    display: flex;
+    justify-content: space-between;
+
+    margin-top: 8px;
+
+    color: var(--muted);
+
+    font-size: 11px;
+}
+
+/* =========================
+   Drop Insights
+   ========================= */
+
+.dashboard-insight {
+    padding: 16px 20px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    border-bottom: 1px solid #f0f2f6;
+}
+
+.dashboard-insight:last-child {
+    border-bottom: 0;
+}
+
+.dashboard-drop-badge {
+    min-width: 65px;
+
+    padding: 7px 10px;
+
+    border-radius: 9px;
+
+    background: var(--red-light);
+
+    color: var(--red);
+
+    text-align: center;
+
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.dashboard-muted {
+    color: var(--muted);
+
+    font-size: 12px;
+}
+
+/* =========================
+   Empty State
+   ========================= */
+
+.dashboard-empty {
+    padding: 45px 20px;
+
+    text-align: center;
+
+    color: var(--muted);
+
+    font-size: 13px;
+}
+
+/* =========================
+   Footer
+   ========================= */
+
+.dashboard-footer {
+    margin-top: 28px;
+
+    text-align: center;
+
+    color: #9aa3b5;
+
+    font-size: 12px;
+}
+
+/* =========================
+   Responsive
+   ========================= */
+
+@media (max-width: 1050px) {
+
+    .dashboard-kpis {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard-main-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 650px) {
+
+    .dashboard-header-inner {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+    .dashboard-content {
+        padding: 22px 14px 40px;
+    }
+
+    .dashboard-heading h1 {
+        font-size: 24px;
+    }
+
+    .dashboard-card-header {
+        padding: 17px;
+    }
+
+    .dashboard-table th,
+    .dashboard-table td {
+        padding: 12px;
+    }
+
+    .dashboard-revenue {
+        padding: 22px;
+    }
+
+    .dashboard-revenue-value {
+        font-size: 32px;
+    }
+}
