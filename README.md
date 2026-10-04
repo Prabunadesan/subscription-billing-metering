@@ -1,72 +1,47 @@
-# Senior Laravel Developer — Subscription Billing & Usage Metering
+#Subscription Billing & Usage Metering
+A multi-tenant SaaS subscription billing and usage-metering backend built with Laravel. The application supports merchants, customers, plans, subscriptions, usage ingestion, aggregation, billing, overage calculation, mid-cycle plan changes, dashboard reporting, caching, rate limiting, queues, and automated tests.
 
-A multi-tenant SaaS subscription billing and usage-metering backend built with Laravel.
+#Technology Stack
+•	PHP 8.5
+•	Laravel 13
+•	MySQL
+•	Laravel Queue
+•	Laravel Cache
+•	Redis-ready architecture
+•	Blade
+•	CSS
+## Installation
 
-The application supports:
+Clone the repository:
 
-- Multi-tenant merchants
-- Customers and subscriptions
-- Usage event ingestion
-- Idempotent usage recording
-- Daily usage aggregation
-- Plan pricing and overage calculation
-- Mid-cycle plan upgrades/downgrades
-- Prorated billing
-- Invoice generation
-- Usage-based dashboard
-- Usage drop detection
-- Projected overage revenue
-- Queue-based processing
-- Plan pricing cache
-- API rate limiting
-- Automated tests
+gh repo clone Prabunadesan/subscription-billing-metering
 
----
+Go to the project:
 
-# 1. Technology Stack
+cd subscription-billing-metering
 
-- PHP 8.5
-- Laravel 13
-- MySQL
-- Redis-ready architecture
-- Laravel Queue
-- Laravel Cache
-- Blade
-- CSS
-- PHPUnit
+Install PHP dependencies:
 
----
+composer install
 
-# 2. Architecture
+Copy environment file:
 
-The application follows a service-oriented Laravel architecture.
+cp .env.example .env
 
-```text
-                         ┌─────────────────────┐
-                         │      API Client      │
-                         └──────────┬──────────┘
-                                    │
-                                    ▼
-                         ┌─────────────────────┐
-                         │ Laravel Controllers │
-                         └──────────┬──────────┘
-                                    │
-                    ┌───────────────┼────────────────┐
-                    │               │                │
-                    ▼               ▼                ▼
-             Usage Service   Plan Change Service   Dashboard
-                    │               │                │
-                    ▼               ▼                ▼
-             usage_events     subscriptions      daily_usage
-                    │                                  │
-                    ▼                                  │
-             Queue / Job                               │
-                    │                                  │
-                    ▼                                  │
-             daily_usage ◄────────────────────────────┘
-                    │
-                    ▼
-              Billing Service
-                    │
-                    ▼
-          invoices / invoice_items
+Generate application key:
+
+php artisan key:generate
+
+Configure database in '.env'.
+
+Run migrations:
+
+php artisan migrate
+
+Start Laravel:
+
+php artisan serve
+
+Application:
+
+http://127.0.0.1:8000/dashboard/1
