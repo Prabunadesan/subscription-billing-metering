@@ -36,36 +36,43 @@ The application supports:
 - PHPUnit
 
 ---
+## Installation
 
-# 2. Architecture
+Clone the repository:
 
-The application follows a service-oriented Laravel architecture.
+https://github.com/Prabunadesan/subscription-billing-metering.git
 
-                         ┌─────────────────────┐
-                         │      API Client      │
-                         └──────────┬──────────┘
-                                    │
-                                    ▼
-                         ┌─────────────────────┐
-                         │ Laravel Controllers │
-                         └──────────┬──────────┘
-                                    │
-                    ┌───────────────┼────────────────┐
-                    │               │                │
-                    ▼               ▼                ▼
-             Usage Service   Plan Change Service   Dashboard
-                    │               │                │
-                    ▼               ▼                ▼
-             usage_events     subscriptions      daily_usage
-                    │                                  │
-                    ▼                                  │
-             Queue / Job                               │
-                    │                                  │
-                    ▼                                  │
-             daily_usage ◄────────────────────────────┘
-                    │
-                    ▼
-              Billing Service
-                    │
-                    ▼
-          invoices / invoice_items
+Go to the project:
+
+cd subscription-billing-metering
+
+Install PHP dependencies:
+
+composer install
+
+Copy environment file:
+
+cp .env.example .env
+
+Generate application key:
+
+php artisan key:generate
+
+Configure database in '.env'.
+
+Run migrations:
+
+php artisan migrate
+
+Start Laravel:
+
+php artisan serve
+
+Application:
+
+http://127.0.0.1:8000
+
+
+## Author
+
+Prabu Nadesan
