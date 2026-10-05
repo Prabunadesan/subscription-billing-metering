@@ -46,3 +46,6 @@ php artisan serve
 Application:
 
 http://127.0.0.1:8000/dashboard/1
+
+<img width="1352" height="594" alt="Screenshot 2026-10-05 100334" src="https://github.com/user-attachments/assets/59302d8a-2385-4fe8-9ede-c61a4461d946" />
+
